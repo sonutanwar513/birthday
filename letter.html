@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter ❤️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="cursor-canvas"></canvas>
+  <div id="floating-hearts-bg"></div>
+
+  <main id="main-content">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="fa-solid fa-heart-pulse"></i> Jhanvi</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">You</a></li>
+            <li class="nav-item"><a class="nav-link" href="ourstory.html">Our Story</a></li>
+            <li class="nav-item"><a class="nav-link" href="memories.html">Memories</a></li>
+            <li class="nav-item"><a class="nav-link active" href="letter.html">Letter</a></li>
+            <li class="nav-item"><a class="nav-link" href="finale.html">Finale</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="reasons" class="section reasons-section" style="padding-top: 120px;">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">20 Reasons I Love You <i class="fa-solid fa-heart"></i></h2>
+        <p class="section-subtitle text-center" data-aos="fade-up">Tap each card to reveal a reason</p>
+        <div class="row g-3" id="reasons-grid"></div>
+      </div>
+    </section>
+
+    <section id="quotes" class="section quotes-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Words From The Heart <i class="fa-solid fa-quote-left"></i></h2>
+        <div class="quotes-slider glass-card" data-aos="fade-up">
+          <div class="quotes-track" id="quotes-track">
+            <div class="quote-slide active">
+              <p class="quote-text">"Tum meri zindagi ka sabse khoobsurat surprise ho,<br>Jise main kabhi khona nahi chahta. 🎁❤️"</p>
+            </div>
+            <div class="quote-slide">
+              <p class="quote-text">"Tumhe dekh kar aaj bhi butterflies hoti hain,<br>Jaise pehli baar tumse pyaar hua tha. 🦋❤️"</p>
+            </div>
+            <div class="quote-slide">
+              <p class="quote-text">"Log ghar dhoondte hain duniya mein,<br>Maine apna ghar tum mein dhoond liya. 🏡🥹❤️"</p>
+            </div>
+            <div class="quote-slide">
+              <p class="quote-text">"Tum sirf meri girlfriend nahi ho,<br>Tum meri duaon ka sabse khoobsurat jawab ho. 🤲❤️"</p>
+            </div>
+            <div class="quote-slide">
+             <p class="quote-text">"Agar har janam mein tumhe chunna pade,<br>Toh main har baar tumhe hi chununga. 💍♾️❤️"</p>
+            </div>
+          </div>
+          <div class="quotes-dots" id="quotes-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 13: WISHES WALL ============ -->
+    <section id="wishes" class="section wishes-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Wishes Wall <i class="fa-solid fa-wand-magic-sparkles"></i></h2>
+        <div class="row g-4" id="wishes-grid">
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-cake-candles wish-icon"></i>
+             <p>May your smile never fade, your heart always stay happy, and your life be filled with love, laughter, and beautiful surprises. 😊🎂🌸❤️✨</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-star wish-icon"></i>
+              <p>Wishing you a year full of love, laughter, unforgettable memories, and dreams that come true — because you deserve a life as beautiful as your heart. 🎂🌷🥹❤️✨</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-dove wish-icon"></i>
+              <p>May all your silent wishes turn into beautiful realities, and may happiness follow you wherever you go. 👑🌷🎂❤️</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-gift wish-icon"></i>
+              <p>Happy Birthday to the girl who turns my ordinary days into the most beautiful memories of my life. 🎂🥹❤️✨</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-sun wish-icon"></i>
+              <p>You deserve all the love, happiness, and sunshine this world has to offer, and I promise to always be the reason behind your smile. ☀️😊❤️✨</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="glass-card wish-card">
+              <i class="fa-solid fa-ring wish-icon"></i>
+              <p>Every year with you feels like my favorite chapter, and I can't wait to write the rest of our story together. 📖🥹❤️✨</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="letter" class="section letter-section">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">
+      A Letter From My Heart <i class="fa-solid fa-envelope-open-text"></i>
+    </h2>
+
+    <div class="letter-paper" data-aos="fade-up">
+      <p class="letter-greeting">My Dearest Jhanvi, ❤️</p>
+
+      <p>
+        Happy Birthday, Betuuuuuu! 🎂👑
+        Aaj tumhara special day hai, aur main bas itna kehna chahta hoon ki
+        meri zindagi ka sabse khoobsurat hissa tum ho. Pata nahi maine aisa
+        kya accha kiya tha jo tum meri life mein aayi, lekin har din main
+        uss baat ke liye thankful rehta hoon. ❤️
+      </p>
+
+      <p>
+        Tumhari muskaan meri sabse favorite cheez hai, tumhari hasi mera mood
+        theek kar deti hai, aur tumhari ek chhoti si "hmm" bhi mere dil ko
+        sukoon de deti hai. 😊💕 Tumhare saath ki har chhoti baat mere liye
+        ek khoobsurat memory ban jaati hai.
+      </p>
+
+      <p>
+        Tumse baat karna, tumhare saath hasna, tumhara gussa sehna,
+        tumhari care feel karna... ye sab meri zindagi ke woh moments hain
+        jinhe main kabhi khona nahi chahta. Tum sirf meri girlfriend nahi ho,
+        tum meri best friend, meri safe place, meri aadat aur meri sabse
+        pyari dua ho. 🫶✨
+      </p>
+
+      <p>
+        Aaj bhi jab main tumhe dekhta hoon, dil mein wahi pehli baar wali
+        butterflies udne lagti hain. 🦋❤️ Tumhe dekh kar lagta hai ki meri
+        poori duniya mere saamne khadi hai. Log ghar dhoondte hain duniya mein,
+        lekin maine apna ghar tum mein dhoond liya. 🏡🥹
+      </p>
+
+      <p>
+        Main promise karta hoon ki har khushi mein tumhare saath hasunga,
+        har mushkil mein tumhara haath pakadunga, aur har birthday ko tumhare
+        liye aur bhi zyada special banane ki koshish karunga. Chahe waqt
+        kitna bhi badal jaaye, meri feelings tumhare liye kabhi nahi badalengi.
+        💍♾️❤️
+      </p>
+
+      <p>
+        Thank you for choosing me, for trusting me, aur mujhe itna pyaar dene
+        ke liye. Tumne meri ordinary si life ko extraordinary bana diya hai.
+        Tum meri favorite notification ho, meri sweetest distraction ho,
+        aur meri har dua ka sabse khoobsurat jawab ho. 📱❤️🤲
+      </p>
+
+      <p>
+        Happy Birthday to the most beautiful girl, the kindest soul,
+        and the Queen of my heart. 👑🎂❤️
+        Please keep smiling, because your smile is my favorite reason to smile too.
+        🥹🌸
+      </p>
+
+      <p class="letter-signoff">
+        Forever and Always Yours,<br>
+        <strong>Sonu ❤️</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
