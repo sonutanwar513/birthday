@@ -14,36 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cover: "images/image21.jpeg",
       src: "media/song7.mpeg"
     },
-    {
-      title: "Tum Hi Ho",
-      artist: "Arijit Singh",
-      cover: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
-      src: ""
-    },
-    {
-      title: "Kabhi Na Kabhi",
-      artist: "Arijit Singh",
-      cover: "https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?w=300&h=300&fit=crop",
-      src: ""
-    },
-    {
-      title: "Raabta",
-      artist: "Arijit Singh",
-      cover: "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?w=300&h=300&fit=crop",
-      src: ""
-    },
-    {
-      title: "Tujhe Kitna Chahne Lage",
-      artist: "Arijit Singh",
-      cover: "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?w=300&h=300&fit=crop",
-      src: ""
-    },
-    {
-      title: "Hawayein",
-      artist: "Arijit Singh",
-      cover: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=300&h=300&fit=crop",
-      src: ""
-    }
+    
   ];
 
   let currentTrack = 0;
