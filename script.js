@@ -14,7 +14,30 @@ document.addEventListener('DOMContentLoaded', () => {
       cover: "images/image21.jpeg",
       src: "media/song7.mpeg"
     },
-    
+    {
+      title: "Dooron Dooran",
+      artist: "Paresh Pahuja",
+      cover: "images/image22.jpeg",
+      src: "media/song8.mpeg"
+    },
+    {
+      title: "Jaane Na Tu",
+      artist: "Bhoomi",
+      cover: "images/image23.jpeg",
+      src: "media/song9.mpeg"
+    },
+    {
+      title: "Tera hi Rahoon",
+      artist: "Gajendra Verma",
+      cover: "images/image24.jpeg",
+      src: "media/song10.mpeg"
+    },
+    {
+      title: "DEEWAANE",
+      artist: "Navaan Sandhu",
+      cover: "images/image25.jpeg",
+      src: "media/song11.mpeg"
+    }
   ];
 
   let currentTrack = 0;
@@ -22,8 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ========================================================================
      1. MAIN MUSIC PLAYER (Section 7) — now wired into the unified system
-        (the old standalone "audio"/"playBtn" listener that fought with
-        the unified player has been removed; see Section 9 below)
      ======================================================================== */
 
   /* ========================================================================
@@ -56,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') AOS.refresh();
       }, 800);
 
-      // Autoplay first track once user has interacted (browsers require a gesture)
+      // Load first track but DON'T autoplay — wait for user to click play button
       if (songs[currentTrack] && songs[currentTrack].src) {
-        loadTrack(currentTrack, true);
+        loadTrack(currentTrack, false);
       }
     });
   }
@@ -255,11 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========================================================================
-     9. MUSIC CONTROL CENTRAL SYSTEM (Floating Panel + Main Player +
-        Gallery Mini Buttons) — THE SINGLE SOURCE OF TRUTH FOR PLAYBACK.
-        Uses bg-audio as the one shared <audio> element so the floating
-        panel, the Section 7 player, and the gallery mini-play buttons
-        all stay in sync instead of fighting each other.
+     9. MUSIC CONTROL CENTRAL SYSTEM
      ======================================================================== */
   const bgAudio = document.getElementById('bg-audio');
 
@@ -287,6 +304,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function loadTrack(index, autoplay) {
     if (!songs.length) return;
+    
+    // Stop video when loading a song
+    const videoIframe = document.getElementById('video-iframe');
+    const videoLightbox = document.getElementById('video-lightbox');
+    if (videoIframe) {
+      videoIframe.src = '';
+    }
+    if (videoLightbox) {
+      videoLightbox.classList.remove('open');
+    }
+    
     currentTrack = ((index % songs.length) + songs.length) % songs.length;
     const song = songs[currentTrack];
 
@@ -339,7 +367,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playerDisc) playerDisc.classList.toggle('spin', playing);
     if (fmCover) fmCover.classList.toggle('is-playing', playing);
 
-    // Sync any gallery mini-button whose song matches the currently loaded track
     const currentSong = songs[currentTrack];
     document.querySelectorAll('.play-mini').forEach(btn => {
       const isActive = currentSong && btn.getAttribute('data-song') === currentSong.src;
@@ -570,14 +597,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ========================================================================
      13. VIDEO LIGHTBOX MODAL
-     (Note: the HTML currently uses an <iframe> for this lightbox. An
-     <iframe> cannot play local .mp4 files — it only works for embeddable
-     players like YouTube/Vimeo. This script sets .src on whatever element
-     has id="video-iframe", so it will start working immediately and
-     correctly once that element is changed to a <video controls> tag in
-     the HTML/structure. No structural change is made here per your
-     request, but flagging it so the video modal doesn't seem "broken"
-     when actually it just needs that one tag swapped.)
      ======================================================================== */
   const videoLightbox = document.getElementById('video-lightbox');
   const videoIframe = document.getElementById('video-iframe');
@@ -588,8 +607,13 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', () => {
         const videoUrl = card.dataset.video;
         if (!videoUrl) return;
-        // Works for <video> (ignores the query string harmlessly if swapped later)
-        // and for real iframe-embeddable URLs.
+        
+        // Stop any playing song when opening video
+        if (bgAudio && !bgAudio.paused) {
+          bgAudio.pause();
+          updateMusicPlayState(false);
+        }
+        
         videoIframe.src = videoUrl;
         if (typeof videoIframe.play === 'function') {
           videoIframe.play().catch(() => {});
@@ -616,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========================================================================
-     14. QUEEN SPARKLES EFFECT (de-duplicated — was defined twice before)
+     14. QUEEN SPARKLES EFFECT
      ======================================================================== */
   const queenSparkles = document.querySelector('.queen-sparkles');
   if (queenSparkles) {
@@ -968,11 +992,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ========================================================================
      15. MEMORIES MINI PLAYLIST — GALLERY PLAY BUTTONS
-     Now routes through the unified bgAudio system above (Section 9) so
-     the floating panel / Section 7 player / gallery buttons never fight
-     over playback or show conflicting play/pause icons.
-     Falls back to the standalone #audioPlayer element only if a button's
-     data-song doesn't match any track in the songs[] array.
      ======================================================================== */
   const audioPlayer = document.getElementById("audioPlayer");
   const miniButtons = document.querySelectorAll(".play-mini");
@@ -983,11 +1002,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const songPath = this.getAttribute("data-song");
         if (!songPath) return;
 
-        // Try to find this song inside the shared songs[] array first
         const matchIndex = songs.findIndex(s => s.src === songPath);
 
         if (matchIndex !== -1) {
-          // It's part of the unified player — toggle via bgAudio
           if (currentTrack === matchIndex && bgAudio && !bgAudio.paused) {
             bgAudio.pause();
             updateMusicPlayState(false);
@@ -997,7 +1014,6 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // Fallback: independent playback for songs not in the songs[] array
         const targetAudio = audioPlayer || bgAudio;
         if (!targetAudio) return;
 
