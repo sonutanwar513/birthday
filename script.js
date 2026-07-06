@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
      SONGS DATA (single source of truth for all players)
      ======================================================================== */
   const songs = [
+
+    {
+      title: "O Meri Laila",
+      artist: "Jyotica Tangri",
+      cover: "images/image26.jpeg",
+      src: "media/song12.mpeg"
+    },
     {
       title: "Tere Sang Yaara",
       artist: "Atif Aslam",
